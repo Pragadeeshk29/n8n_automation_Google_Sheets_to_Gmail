@@ -1,0 +1,85 @@
+Received: from 403404498529
+	named unknown
+	by gmailapi.google.com
+	with HTTPREST;
+	Mon, 23 Nov 2026 19:54:12 -0600
+To: pragadeesh29@gmail.com
+Subject: Data Summary from Google Sheet
+Message-Id: <CAMRD3WdTk3tBota40+EQED=9xLcNmLYvo9BfqxyzZ08s_3FDqw@mail.gmail.com>
+Content-Transfer-Encoding: 7bit
+Date: Mon, 23 Nov 2026 19:54:12 -0600
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+From: pragadeesh Kasi <pragadeesh29@gmail.com>
+
+Hi,
+Here is the latest data from the sheet:
+- Name: Deepa M
+- Course: Data Science
+- Status: yes
+
+- Name: Kavitha
+- Course: Machine Learning
+- Status: yes
+
+- Name: Arun P
+- Course: Python
+- Status: yes
+
+- Name: Vijay S
+- Course: Machine Learning
+- Status: yes
+
+- Name: Revathi M
+- Course: Machine Learning
+- Status: yes
+
+- Name: Muthu S
+- Course: Python
+- Status: yes
+
+- Name: Prasanth J
+- Course: Python
+- Status: yes
+
+- Name: Divya P
+- Course: Machine Learning
+- Status: yes
+
+- Name: Janaki R
+- Course: Data Science
+- Status: yes
+
+- Name: Thenmozhi
+- Course: Machine Learning
+- Status: yes
+
+- Name: Naveen B
+- Course: Python
+- Status: yes
+
+- Name: Suganya T
+- Course: Data Science
+- Status: yes
+
+- Name: Mohan J
+- Course: Python
+- Status: yes
+
+- Name: Kishore M
+- Course: Machine Learning
+- Status: yes
+
+- Name: Latha S
+- Course: Data Science
+- Status: yes
+
+- Name: Ammu K
+- Course: Machine Learning
+- Status: yes
+Regards,
+Your Automation Bot
+
+---
+This email was sent automatically with n8n
+https://n8n.io

@@ -1,0 +1,135 @@
+{
+  "name": "Gmailsheet_gmail",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d50e930f-8c6e-4f4f-8418-7456d8fd3d7e",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1fbAPktJ_N_PjepA-pwlKz4JRygoydpWMFx3548n6Eyw",
+          "mode": "list",
+          "cachedResultName": "students_clean",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1fbAPktJ_N_PjepA-pwlKz4JRygoydpWMFx3548n6Eyw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 889036712,
+          "mode": "list",
+          "cachedResultName": "students_clean",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1fbAPktJ_N_PjepA-pwlKz4JRygoydpWMFx3548n6Eyw/edit#gid=889036712"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        224,
+        0
+      ],
+      "id": "61c70c03-2e11-4f56-a3bd-3d0e552d33bc",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "eP3DI4DjswAUX4Y9",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const students = $input.all().map((item) => item.json);\n\nconst subject = 'Data Summary from Google Sheet';\n\nconst formattedRecords = students\n  .map((s) => {\n    const name = s.name ?? s.Name ?? '';\n    const course = s.course ?? s.Course ?? '';\n    const status = s.status ?? s.Status ?? s.fee_paid ?? s.Fee_Paid ?? '';\n\n    return [\n      `- Name: ${name}`,\n      `- Course: ${course}`,\n      `- Status: ${status}`,\n    ].join('\\n');\n  })\n  .join('\\n\\n');\n\nconst body = [\n  'Hi,',\n  'Here is the latest data from the sheet:',\n  formattedRecords,\n  'Regards,',\n  'Your Automation Bot',\n].join('\\n');\n\nreturn [\n  {\n    json: {\n      subject,\n      body,\n    },\n  },\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        0
+      ],
+      "id": "9e71dc7b-ccdb-4b47-be7d-c97fc4c5a024",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "sendTo": "pragadeesh29@gmail.com",
+        "subject": "={{ $json.subject }}",
+        "emailType": "text",
+        "message": "={{ $json.body }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        672,
+        0
+      ],
+      "id": "197e92ed-144a-4673-a7ec-fe09a4a5c9ec",
+      "name": "Send a message",
+      "webhookId": "fb643d05-c8aa-446c-9637-c2e1cb58a636",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "ltHOBUBEJ5AdIDl4",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "b1d38a61-c33c-44a2-9e8e-966d54407380",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "f0292bf7d33097ef026df26071afae542562ef245b07f98c7e241e701e976e20"
+  },
+  "nodeGroups": [],
+  "id": "n3fDDxCSFMWrxJBU",
+  "tags": []
+}
